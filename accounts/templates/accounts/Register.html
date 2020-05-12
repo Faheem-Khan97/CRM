@@ -1,0 +1,108 @@
+
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+
+    <!--font awesome -->
+    <!-- google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Arvo:700|Roboto:900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/javascript/all.js'%}">
+
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
+</head>
+<body class="">
+
+
+
+
+
+    <div class="row container">
+        <div class="col-md-6 my-3">
+            <div class="card card-body bg-secondary">
+                <!--title-->
+                <div class="card-title text-center text-white">
+                    <h2 class="text-capitalize">User Registration</h2>
+                    <p>new user sign in</p>
+                </div>
+                <!--end of title-->
+                <form action="#" method = "POST">
+                    {% csrf_token %}
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            {{form.username}}
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Email</span>
+                                {{form.email}}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        {{form.password1}}
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ">confirm password</span>
+                        {{form.password2}}
+                     </div>
+
+                      <!--input grous-->
+                     <div class="d-flex justify-content-center py-3">
+                        <button type="submit" class="btn btn-outline-danger m-2 my-sm-0btn-block text-uppercase text-white">sign up Here</button>
+                    </div>
+                    <div class="d-flex justify-content-content text-center py-3">
+                        Already have an account ?    <a class = 'text-warning px-2' href="{%url 'loginPage'%}">Login here</a>
+                    </div>
+
+
+
+
+
+                </form>
+
+                {{form.errors}}
+
+            </div>
+
+
+        </div>
+    </div>
+
+ <script src="{% static '/javascript/jquery-3.3.1.min.js'%}"></script>   
+ <script src="{% static '/javascript/bootstrap.bundle.min.js'%}"></script>
+    <script>
+    
+    var element = document.getElementsByTagName('input');
+    element[1].placeholder = ' Username';
+    element[2].placeholder = ' Email';
+    element[3].placeholder = ' Password';
+    element[4].placeholder = ' Confirm Password';
+
+
+
+
+
+    
+    </script>
+
+</body>
+</html>

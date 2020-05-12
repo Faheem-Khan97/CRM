@@ -1,0 +1,75 @@
+{% extends 'accounts/base.html' %}
+
+{% block content%}
+{% include 'accounts/status.html' %}
+
+
+
+
+<div class="row py-2">
+    <div class="col-md-5">
+        
+        <div class="card card-body">
+            <h4>Customers: {{noOfCustomers}}</h4>
+            <a href="#" class="btn btn-outline-danger btn-block text-uppercase">Create customer</a>
+            <table class="table ">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th scope="col">Customers</th>
+                    <th scope="col">Phone</th>
+                   
+                  </tr>
+                </thead>
+                {% for customer in customerList%}
+                <tr>
+                  <td><a class = "btn btn-sm btn-info" href="{% url 'customers' customer.id %}">View</a></td>
+                  <td>{{customer.name}}</td>
+                  <td>{{customer.phone}}</td>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+
+
+        </div>
+
+    </div>
+    <div class="col-md-7 ">
+      
+
+        <div class="card card-body">
+            <h4>Orders: {{noOfOrders}}</h4>
+            <table class="table ">
+                <thead>
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Date Ordered</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Update</th>
+
+                    <th scope="col">Remove</th>
+                  </tr>
+                </thead>
+                {% for order in orderList%}
+                <tr>
+                  <td>{{order.product}}</td>
+                  <td>{{order.dateCreated}}</td>
+                  <td>{{order.status}}</td>
+                  <td><a class = "btn btn-sm btn-info" href = "{% url 'updateOrder' order.id%}">Update</a></td>
+                  <td><a  class = "btn btn-sm btn-danger" href ="{% url 'deleteOrder' order.id%}">Delete</a></td>
+                  
+                </tr>
+                {% endfor %}
+
+            </table>
+            
+        </div>
+
+    </div>
+
+
+
+</div>
+{% endblock%}

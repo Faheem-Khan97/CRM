@@ -1,0 +1,87 @@
+
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOgin page</title>
+
+
+    <!--font awesome -->
+    <!-- google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Arvo:700|Roboto:900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/javascript/all.js'%}">
+
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
+</head>
+<body class="">
+
+
+
+
+
+    <div class="row container">
+        <div class="col-md-6 my-3">
+            <div class="card card-body bg-secondary">
+                <!--title-->
+                <div class="card-title text-center text-white">
+                    <h2 class="text-capitalize">User Login</h2>
+                    <p>new user sign in</p>
+                </div>
+                <!--end of title-->
+                <form action="#" method = "POST">
+                    {% csrf_token %}
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" name = 'username' placeholder="enter username">
+                        </div>
+                        
+                    </div>
+
+
+
+
+                    <div class="form-group mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            <input type="password" name = 'password' placeholder="enter your password">
+                        
+                        </div>
+                    </div>
+
+                      <!--input grous-->
+                     <div class="d-flex justify-content-center py-3">
+                        <button type="submit" class="btn btn-outline-danger m-2 my-sm-0btn-block text-uppercase text-white">Login Here</button>
+                    </div>
+
+
+
+
+
+                </form>
+                <div class="d-flex justify-content-center py-3">
+                    new user ? register here<a class = 'text-light px-2' href="{%url 'registerPage'%}">Sign In</a>
+                </div>
+
+                {%for message in messages%}
+                    <p>{{message}}</p>
+                {%endfor%}
+
+            </div>
+
+
+        </div>
+    </div>
+
+ <script src="{% static '/javascript/jquery-3.3.1.min.js'%}"></script>   
+ <script src="{% static '/javascript/bootstrap.bundle.min.js'%}"></script>
+
+
+</body>
+</html>

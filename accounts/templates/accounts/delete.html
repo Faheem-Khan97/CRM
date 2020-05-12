@@ -1,0 +1,26 @@
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Are you sure you want to delete "{{item}}"</p>
+    <form action="{% url 'deleteOrder' item.id %}" method="POST">
+
+        {% csrf_token %}
+
+        <a href="{% url 'home' %}">Cancel</a>
+        <button><input type="submit" name ="Confirm"></button>
+      
+    </form>
+    {% endblock %}
+    
+</body>
+</html>

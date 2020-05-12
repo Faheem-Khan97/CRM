@@ -1,0 +1,96 @@
+{% extends 'accounts/base.html' %}
+
+{% block content%}
+    
+<div class="row">
+    <div class="col-md py-2">
+        <div class="card card-body">
+            <h5>Customers: <strong>{{Customer.name}}</strong></h5>
+           
+            <hr>
+            <a href="#" class="btn btn-outline-danger btn-block text-uppercase">Update customer</a>
+            <a href="{% url 'createOrder' Customer.id%}" class="btn btn-outline-info btn-block text-uppercase">Place Order</a>
+        </div>
+    </div>
+
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Contact Information:</h5>
+            <hr>
+            <p>Email: {{Customer.email}}</p>
+            <p>Phone: {{Customer.phone}}</p>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card text-center text-white">
+            <div class="card-header">
+                <h5 class="card title text-dark">Total Orders</h5>
+                
+            </div>
+            <div class="card-body">
+                <he class="card-title text-dark">{{orderCount}}</he>
+            </div>
+
+        </div>
+
+    </div>   
+</div>
+<div class="row py-2">
+    <div class="col-md">
+        <form class="form-inline my-2 my-lg-0">
+                {{myFilter.form}}
+            <button class="btn btn-outline-success m-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+
+</div>
+
+
+<div class="row py-2">
+    <div class="col-md ">
+      
+
+        <div class="card card-body">
+            <table class = "table table-sm">
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date Ordered</th>
+
+
+                    <th scope="col">Update</th>
+
+                    <th scope="col">Remove</th>
+                </tr>
+        
+                {% for order in Order%}
+        
+                <tr>
+                    <td>{{order.product}}</td>
+                    <td>{{order.product.category}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.dateCreated}}</td>
+
+                    <td><a class = "btn btn-sm btn-info " href="{% url 'updateOrder' order.id%}">update</a></td>
+                    <td><a class = "btn btn-sm btn-danger" href="{% url 'deleteOrder' order.id%}">Remove</a></td>
+
+
+                
+                </tr>
+
+                {% endfor %}
+
+            </table>
+             
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock%}

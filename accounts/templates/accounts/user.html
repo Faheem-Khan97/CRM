@@ -1,0 +1,45 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block content%}
+
+{% include 'accounts/status.html' %}
+
+
+
+<div class="row py-2">
+    <div class="col-md ">
+      
+
+        <div class="card card-body">
+            <table class = "table table-sm">
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date Ordered</th>
+                </tr>
+        
+                {% for order in Order%}
+        
+                <tr>
+                    <td>{{order.product}}</td>
+                    <td>{{order.product.category}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.dateCreated}}</td>
+
+
+                
+                </tr>
+
+                {% endfor %}
+
+            </table>
+             
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
