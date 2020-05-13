@@ -22,12 +22,12 @@ def registerPage(request):
             user = form.save()
             username = form.cleaned_data.get('username') # for getting just username from the form
             group = Group.objects.get(name = 'customer') # fetching group to add the group with name customer
-
+            user.groups.add(group)
 
             customer.objects.create(
                 user = user,
             )
-            user.groups.add(group)
+            
 
 
             messages.success(request, 'account is successfully created for ' + username)
@@ -47,7 +47,7 @@ def loginPage(request):
         user = authenticate(request, username = username, password = password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('userPage')
         else:
             messages.info(request, 'username or password is incorrect')
             return render(request, 'accounts/Login.html', context)
@@ -164,10 +164,13 @@ def logoutUser(request):
     logout(request)
     return redirect('loginPage')
 
+
+
+
+
+
 @login_required(login_url = 'loginPage')
 @allowedUser(allowed_roles = ['customer'])
-
-
 
 def userPage(request):
     orders = request.user.customer.order_set.all()
