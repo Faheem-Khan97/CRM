@@ -5,15 +5,15 @@ from django.contrib.auth.models import User
 
 class customer(models.Model):
 
-    user = models.OneToOneField(User, null = True, on_delete = models.CASCADE)
+    user = models.OneToOneField(User, null = True, blank = True, on_delete = models.CASCADE)
     name = models.CharField(max_length = 20, null= True)
     phone = models.CharField(max_length = 20, null= True)
     email = models.CharField(max_length = 20, null= True)
-    #profile_pic = models.ImageField(null = True, blank = True)
+    profile_pic = models.ImageField(default = "profile1.png" , null = True, blank = True)
     dateCreated = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
-        return self.name
+        return self.user 
 
 
 
@@ -22,7 +22,12 @@ class tag(models.Model):
 
 
     def __str__(self):
-        return self.name
+        if self.user is not None:
+            return self.user
+        else:
+            return self.name
+
+
 
 
 class product(models.Model):

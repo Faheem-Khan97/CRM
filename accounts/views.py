@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
-from .forms import orderForm, createUserForm 
+from .forms import orderForm, createUserForm , customerForm
 from .filters import OrderFilter
 from .decorators import authenticatedUser, allowedUser, admin_only
 
@@ -179,3 +179,20 @@ def userPage(request):
     deliveredOrders = orders.filter(status = 'delivered').count()
     context = {'Order': orders, 'pendingOrders': pendingOrders, 'deliveredOrders': deliveredOrders , 'noOfOrders': noOfOrders }
     return render(request, 'accounts/user.html', context)
+
+
+@login_required(login_url = 'loginPage')
+@allowedUser(allowed_roles = ['customer'])
+def settings(request):
+    customer = request.user.customer
+    Form = customerForm(instance = customer)
+    context = {'Form': Form}
+    if request.method == 'POST':
+        Form = customerForm(request.POST, request.FILES, instance = customer)
+
+        if Form.is_valid():
+
+            Form.save()
+            return redirect('settings')
+
+    return render(request, 'accounts/setting.html', context)
