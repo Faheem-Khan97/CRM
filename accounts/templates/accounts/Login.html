@@ -1,18 +1,81 @@
 
 {% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+    <title>Login page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <link rel="stylesheet" href="{% static '/css/log.css'%}">
+
+  </head>
+</head>
+<body >
+
+    <div class="modal-dialog text-center"> 
+      <div class="col-sm-9 main-section">
+        <div class="modal-content"> 
+            <div class="col-12 user-img">
+                <img src="{% static '/images/user.png' %}" alt="" srcset="">
+            </div>
+          <div class="col-12 form-input">
 
 
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group  ">
+                    <input  name = 'username' class = " form-control" type="text" placeholder="Full Name">
+                  </div>
+                   
+  
+              <div class="form-group ">
+                <input  class = " form-control" type="password" name = 'password' placeholder="Password">
+              </div>
+
+              <button type="submit" class = "class btn btn-success">Login</button>
+  
+            </form>
+          </div>
+          <div class="col-12 login">
+            <span class="text-info font-weight-bold mx-2">  Don't have account ? </span><a href="{%url 'registerPage'%}">Register Here</a>
+          </div>
+          {%for message in messages%}
+          <div class="alert alert-warning"> {{message}}</div>
+      {%endfor%}
+
+          <div>
+
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </body>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOgin page</title>
-
-
-    <!--font awesome -->
-    <!-- google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Arvo:700|Roboto:900" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static '/javascript/all.js'%}">
@@ -20,20 +83,15 @@
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
 </head>
 <body class="">
-
-
-
-
-
     <div class="row container">
         <div class="col-md-6 my-3">
             <div class="card card-body bg-secondary">
-                <!--title-->
+
                 <div class="card-title text-center text-white">
                     <h2 class="text-capitalize">User Login</h2>
                     <p>new user sign in</p>
                 </div>
-                <!--end of title-->
+              
                 <form action="#" method = "POST">
                     {% csrf_token %}
                     <div class="input-group my-3">
@@ -55,7 +113,6 @@
                         </div>
                     </div>
 
-                      <!--input grous-->
                      <div class="d-flex justify-content-center py-3">
                         <button type="submit" class="btn btn-outline-danger m-2 my-sm-0btn-block text-uppercase text-white">Login Here</button>
                     </div>
@@ -84,4 +141,5 @@
 
 
 </body>
-</html>
+</html>\
+-->

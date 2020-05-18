@@ -27,3 +27,7 @@ body {
     margin: 0 auto;
     border-radius: 50%;
 }
+#img{
+    width: 120px;
+    height: 32px;
+}
