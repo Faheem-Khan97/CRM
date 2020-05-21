@@ -17,9 +17,9 @@
 </head>
 <body >
 
-    <div class="modal-dialog text-center"> 
+    <div class="modal-dialog text-center "> 
       <div class="col-sm-9 main-section">
-        <div class="modal-content"> 
+        <div class="modal-content bg-secondary"> 
             <div class="col-12 user-img">
                 <img src="{% static '/images/user.png' %}" alt="" srcset="">
             </div>
@@ -47,6 +47,9 @@
           {%for message in messages%}
           <div class="alert alert-warning"> {{message}}</div>
       {%endfor%}
+
+
+      <a href="{% url 'reset_password' %}">Forget Password</a>
 
           <div>
 
